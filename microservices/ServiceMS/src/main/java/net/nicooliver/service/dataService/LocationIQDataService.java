@@ -37,8 +37,10 @@ public class LocationIQDataService {
         } catch (RestClientResponseException e) {
             if(e.getRawStatusCode() == 400) {
                 throw new LocationNotFoundException("Location was not found");
+            } else if(e.getRawStatusCode() == 429) {
+                return getLongitudeLatitudeByAddress(address);
             } else {
-                throw new LocationBadRequestException("Something went wrong while trying to fetch lat and lon");
+                throw new LocationBadRequestException(e.getResponseBodyAsString());
             }
         }
     }
@@ -57,8 +59,10 @@ public class LocationIQDataService {
         } catch (RestClientResponseException e) {
             if(e.getRawStatusCode() == 400) {
                 throw new LocationNotFoundException("Location was not found");
+            } else if(e.getRawStatusCode() == 429) {
+                return getAddress(longitude, latitude);
             } else {
-                throw new LocationBadRequestException("Something went wrong while trying to fetch address");
+                throw new LocationBadRequestException(e.getResponseBodyAsString());
             }
         }
     }

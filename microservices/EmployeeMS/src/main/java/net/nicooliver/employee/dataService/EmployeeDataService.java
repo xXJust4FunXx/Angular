@@ -54,11 +54,9 @@ public class EmployeeDataService {
         result.setForename(employeeDto.getForename());
         result.setSurname(employeeDto.getSurname());
 
-//        LongitudeLatitude lonlat = locationIQDataService.getLongitudeLatitudeByAddress(employeeDto.getAddress());
-//        result.setLongitude(lonlat.getLongitude());
-//        result.setLatitude(lonlat.getLatitude());
-        result.setLongitude("-1");
-        result.setLatitude("-1");
+        LongitudeLatitude lonlat = locationIQDataService.getLongitudeLatitudeByAddress(employeeDto.getAddress());
+        result.setLongitude(lonlat.getLongitude());
+        result.setLatitude(lonlat.getLatitude());
 
         return result;
     }
@@ -68,9 +66,8 @@ public class EmployeeDataService {
 
         result.setId(employee.getId());
         result.setName(employee.getSurname() + " " + employee.getForename());
-//        result.setAddress(locationIQDataService.getAddress(employee.getLongitude(),
-//                employee.getLatitude()));
-        result.setAddress("testAddress");
+        result.setAddress(locationIQDataService.getAddress(employee.getLongitude(),
+                employee.getLatitude()));
 
         return result;
     }

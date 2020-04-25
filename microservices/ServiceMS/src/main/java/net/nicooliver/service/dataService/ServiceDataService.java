@@ -38,8 +38,7 @@ public class ServiceDataService {
         ServiceResource result = new ServiceResource();
         result.setId(service.getId());
         result.setName(service.getName());
-        //result.setAddress(locationIQDataService.getAddress(service.getLongitude(), service.getLatitude()));
-        result.setAddress("testAddress");
+        result.setAddress(locationIQDataService.getAddress(service.getLongitude(), service.getLatitude()));
         result.setDate(service.getDate());
         result.setEmployee(employeeDataService.getEmployeeById(service.getEmployeeId()));
         return result;
@@ -57,11 +56,9 @@ public class ServiceDataService {
         result.setEmployeeId(serviceDto.getEmployeeId());
         result.setDate(serviceDto.getDate());
 
-//        LongitudeLatitude lonlat = locationIQDataService.getLongitudeLatitudeByAddress(serviceDto.getAddress());
-//        result.setLatitude(lonlat.getLatitude());
-//        result.setLongitude(lonlat.getLongitude());
-        result.setLatitude("-1");
-        result.setLongitude("-1");
+        LongitudeLatitude lonlat = locationIQDataService.getLongitudeLatitudeByAddress(serviceDto.getAddress());
+        result.setLatitude(lonlat.getLatitude());
+        result.setLongitude(lonlat.getLongitude());
 
         return result;
     }
