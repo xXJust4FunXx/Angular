@@ -1,10 +1,10 @@
-package net.nicooliver.employee.dataService;
+package net.nicooliver.service.dataService;
 
-import net.nicooliver.employee.data.location.AddressResource;
-import net.nicooliver.employee.data.location.LocationResource;
-import net.nicooliver.employee.data.location.LongitudeLatitude;
-import net.nicooliver.employee.exception.LocationBadRequestException;
-import net.nicooliver.employee.exception.LocationNotFoundException;
+import net.nicooliver.service.data.location.AddressResource;
+import net.nicooliver.service.data.location.LocationResource;
+import net.nicooliver.service.data.location.LongitudeLatitude;
+import net.nicooliver.service.exception.LocationBadRequestException;
+import net.nicooliver.service.exception.LocationNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientResponseException;
@@ -45,7 +45,7 @@ public class LocationIQDataService {
 
     public String getAddress(String longitude, String latitude) {
         RestTemplate restTemplate = new RestTemplate();
-        Map<String, String> vars = new HashMap<>();
+        Map<String, String> vars = new HashMap<String, String>();
         vars.put("apiKey", API_KEY);
         vars.put("latitude", latitude);
         vars.put("longitude", longitude);
