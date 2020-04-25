@@ -1,4 +1,4 @@
-package net.nicooliver.service.data;
+package net.nicooliver.service.data.service;
 
 import lombok.Data;
 
@@ -14,13 +14,11 @@ public class ServiceEntity {
 
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id")
-    private EmployeeEntity employee;
+    private Integer employeeId;
 
     private String date;
 
-    private float longitude;
+    private String longitude;
 
-    private float latitude;
+    private String latitude;
 }
